@@ -3,8 +3,6 @@
 ### Predicting Appple's Adj. Close Price For The Next 7 Days 
 ### WEB APP - www.aridavinci.com:5000
 
-  <img src='images/blue.PNG' width='50%'/>
-  
  # Table Of Contents
 * [Purpose](#purpose)
 * [Data Description](#data-description)
