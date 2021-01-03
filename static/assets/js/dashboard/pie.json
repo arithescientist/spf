@@ -1,14 +1,14 @@
 [
     {
-        "sizes": 142,
+        "sizes": 39,
         "labels": "Positive"
     },
     {
-        "sizes": 56,
+        "sizes": 16,
         "labels": "Negative"
     },
     {
-        "sizes": 102,
+        "sizes": 245,
         "labels": "Neutral"
     }
 ]
