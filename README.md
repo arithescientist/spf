@@ -32,15 +32,19 @@ For this research, I used the Apple's historical stock data extracted from Yahoo
 ## [Model](https://github.com/ariavathlete/aidiagnosis/tree/master/app/views/models)
 Firstly, I loaded the specific Apple (AAPL) dataset from yahoo finance. This dataset is composed of 12 different features but I just used the Adj. Close price column since that's what I'm going to be forecasting using the ARMA model. Next step is to test for stationarity but given that this is a stock data, its highly likely that it's not going to be stationary. This is because stock prices usually increase over time. So given its not stationary, the mean of the data increases over time which might ultimately lead to a degradation of the model. 
 To test if the data is stationary, I used the Augmented Dickey-Fuller Test. As we can see, the p-value is larger than the significance level of 0.05 so I will accept the null hypothesis which is that the data is non-stationary. 
-
-## [Results](./covid_vs_normal.ipynb)
-Next, I created ACF and PACF plots to determine the p and q input parameters for our ARIMA model. From the plots, x and y seems to be a good values for p and q respectively but I'll still run an autoarima model to be sure I utilize the most optimal parameters. I then carry on into fitting the model in train half of the data using x and y as my parameters gotten from running the autoarima model. After validating the model with test results, my root mean square error is x rmse which is not too bad. 
   
-  <img src='='screenshots/Result1.png' width='50%'/>
+  <img src='='screenshots/trends.png' width='50%'/>
+  <img src='='screenshots/corr.png' width='50%'/>
+  
+## [Results](./covid_vs_normal.ipynb)
+Next, I created ACF and PACF plots to determine the p and q input parameters for our ARIMA model. From the plots, 1 and 2 seems to be a good values for p and q respectively but I'll still run an autoarima model to be sure I utilize the most optimal parameters. I then went on into fitting the model in train half of the data using 0 as my p and q parameters gotten from running the autoarima model with 1 as my order of differencing. After validating the model with test results, my root mean square error is x rmse which is not too bad. 
+    
+  <img src='='screenshots/autoarima.png' width='50%'/>
+  <img src='='screenshots/twitter.png' width='50%'/>
 
 
 ### Recommendation
-* x and y seem to be the best parameters to use with AAPL stock dataset but I recommend using an autoarima model to be sure the best parameters are picked before fitting in the training data.
+* 0 seems to be the best parameters for p and q with 1 as the order of differencing to use when forecasting AAPL stock dataset but I recommend using an autoarima model to be sure the best parameters are picked before fitting in the training data.
 
 ## Setup
 - Install the requirements and setup the development environment.
@@ -56,6 +60,3 @@ Next, I created ACF and PACF plots to determine the p and q input parameters for
 
 ## Future Work
    * Use a simple LSTM model to forecast 7 days out then do the same with a Multivariate LSTM model. 
-## License
-
-The MIT License (MIT). Please see the [license file](LICENSE) for more information.
