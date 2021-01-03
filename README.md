@@ -42,28 +42,6 @@ Next, I created ACF and PACF plots to determine the p and q input parameters for
 ### Recommendation
 * x and y seem to be the best parameters to use with AAPL stock dataset but I recommend using an autoarima model to be sure the best parameters are picked before fitting in the training data.
 
-### Website Backend
-- [Flask](http://flask.pocoo.org/).
-- [Flask-Login](https://flask-login.readthedocs.org/en/latest/) for the user accounts.
-- [Flask-SQLAlchemy](https://pythonhosted.org/Flask-SQLAlchemy/) interacting with the database.
-- [Flask-WTF](https://flask-wtf.readthedocs.org/en/latest/) and [WTForms](https://wtforms.readthedocs.org/en/latest/) for the form handling.
-- [Flask-Mail](https://pythonhosted.org/Flask-Mail/) for sending mails.
-- [itsdangerous](http://pythonhosted.org/itsdangerous/) for generating random tokens for the confirmation emails.
-- [Flask-Bcrypt](https://flask-bcrypt.readthedocs.org/en/latest/) for generating secret user passwords.
-- [Flask-Admin](https://flask-admin.readthedocs.org/en/latest/) for building an administration interface.
-- [Flask-Script](https://flask-script.readthedocs.io/en/latest/) for managing the app.
-- [structlog](http://structlog.readthedocs.io/en/stable/) for logging.
-- [Flask-DebugToolBar](https://flask-debugtoolbar.readthedocs.io/en/latest/) for adding a performance toolbar in development.
-- [gunicorn](http://gunicorn.org/) for acting as a reverse-proxy for Nginx.
-- [Flask-Stripe](http://stripe.com/) for subscription billing.
-
-### Website Frontend
-- [Semantic UI](http://semantic-ui.com/) for the global style. Very similar to [Bootstrap](http://getbootstrap.com/).
-- [Stackpath.Bootstrapcdn](https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css) for the index & demo.
-- [Google-api](https://fonts.googleapis.com/css?family=Amatic+SC:400,700%7CBarlow:300,400,500,600,700,800,900%7CPT+Sans:400,700&display=swap) for the results.
-- [Leaflet JS](http://leafletjs.com/) for the map.
-
-
 ## Setup
 - Install the requirements and setup the development environment.
 
