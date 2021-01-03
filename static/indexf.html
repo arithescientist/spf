@@ -72,30 +72,16 @@
             </ul>
 
             <ul class="navbar-item flex-row ml-md-auto">
-                <li class="nav-item theme-text">
-                    <a class="nav-link"> Ari Iwunze </a>
-                </li>
-                <li class="nav-item dropdown language-dropdown">
-                    <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="language-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ url_for('static', filename='assets/img/git.png') }}" class="flag-width" alt="flag">
-                    </a>
-                    <div class="dropdown-menu position-absolute" aria-labelledby="language-dropdown">
-                        <a class="dropdown-item d-flex" href="https://github.com/ariavathlete/spf"><span class="align-self-center">&nbsp;SPF Code</span></a>
-                        <a class="dropdown-item d-flex" href="https://github.com/ariavathlete/aidiagnosis"><span class="align-self-center">&nbsp;iDiagnosis Code</span></a>
-                        <a class="dropdown-item d-flex" href="https://github.com/ariavathlete/chicago_primary_cause_of-caraccidents"><span class="align-self-center">&nbsp;AC Code</span></a>
-                        
-                    </div>
-                </li>
 
                 <li class="nav-item dropdown language-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="language-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="{{ url_for('static', filename='assets/img/ca.png') }}" class="flag-width" alt="flag">
                     </a>
                     <div class="dropdown-menu position-absolute" aria-labelledby="language-dropdown">
-                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/de.png') }}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;Ge</span></a>
-                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/jp.png') }}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;Ja</span></a>
-                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/fr.png') }}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;Fr</span></a>
-                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/ca.png') }}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;En</span></a>
+                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/de.png') }}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;German</span></a>
+                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/jp.png') }}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;Japanese</span></a>
+                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/fr.png') }}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;French</span></a>
+                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/ca.png') }}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;English</span></a>
                     </div>
                 </li>
             </ul>
@@ -140,8 +126,14 @@
                                 </a>
                                 <ul class="collapse submenu list-unstyled" id="app" data-parent="#accordionExample">
                                     <li>
-                                        <a href="{{ url_for('index') }}"> Stock Price Forcast </a>
-                                    </li>                               
+                                        <a href="apps_chat.html"> Stock Price Forcast </a>
+                                    </li>
+                                    <li>
+                                        <a href="apps_mailbox.html"> Image Classifier  </a>
+                                    </li>
+                                    <li>
+                                        <a href="apps_todoList.html"> Accident Classifier </a>
+                                    </li>                            
                                 </ul>
                             </li>
 

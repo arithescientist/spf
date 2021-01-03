@@ -4,7 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no">
-    <title>Stock Price Forecast</title>
+    <title>iDiagnosis</title>
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico"/>
@@ -32,6 +33,85 @@
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.22.3/apexcharts.css" rel="stylesheet" type="text/css" />
 
+
+    <style>
+        html {
+            font-size: 14px;
+        }
+
+        .container {
+            max-width: 500px;
+        }
+
+        .pricing-header {
+            max-width: 700px;
+        }
+
+        .card-deck .card {
+            min-width: 150px;
+        }
+
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            html {
+                font-size: 16px;
+            }
+
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+    <style type="text/css">
+      #pdf-viewer {
+        width: 100%;
+        height: 450px;
+        background: rgba(0, 0, 0, 0.1);
+        overflow: auto;
+      }
+
+      .pdf-page-canvas {
+        display: block;
+        margin: 5px auto;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+      }
+    </style>
+
+    <script>   
+        url = 'https://github.com/mozilla/pdf.js/blob/master/test/pdfs/tracemonkey.pdf';
+        var thePdf = null;
+        var scale = 3;
+
+        PDFJS.getDocument(url).promise.then(function(pdf) {
+            thePdf = pdf;
+            viewer = document.getElementById('pdf-viewer');
+
+            for(page = 1; page <= pdf.numPages; page++) {
+              canvas = document.createElement("canvas");    
+              canvas.className = 'pdf-page-canvas';         
+              viewer.appendChild(canvas);            
+              renderPage(page, canvas);
+            }
+        });
+
+        function renderPage(pageNumber, canvas) {
+            thePdf.getPage(pageNumber).then(function(page) {
+              viewport = page.getViewport(scale);
+              canvas.height = viewport.height;
+              canvas.width = viewport.width;          
+              page.render({canvasContext: canvas.getContext('2d'), viewport: viewport});
+        });
+        }
+    </script>
 </head>
 <body>
       <!-- BEGIN LOADER -->
@@ -56,7 +136,7 @@
 
                 </li>
                 <li class="nav-item theme-text">
-                    <a class="nav-link"> Stock Price Forecast </a>
+                    <a class="nav-link"> iDiagnosis </a>
                 </li>
             </ul>
 
@@ -72,36 +152,21 @@
             </ul>
 
             <ul class="navbar-item flex-row ml-md-auto">
-                <li class="nav-item theme-text">
-                    <a class="nav-link"> Ari Iwunze </a>
-                </li>
-                <li class="nav-item dropdown language-dropdown">
-                    <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="language-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="{{ url_for('static', filename='assets/img/git.png') }}" class="flag-width" alt="flag">
-                    </a>
-                    <div class="dropdown-menu position-absolute" aria-labelledby="language-dropdown">
-                        <a class="dropdown-item d-flex" href="https://github.com/ariavathlete/spf"><span class="align-self-center">&nbsp;SPF Code</span></a>
-                        <a class="dropdown-item d-flex" href="https://github.com/ariavathlete/aidiagnosis"><span class="align-self-center">&nbsp;iDiagnosis Code</span></a>
-                        <a class="dropdown-item d-flex" href="https://github.com/ariavathlete/chicago_primary_cause_of-caraccidents"><span class="align-self-center">&nbsp;AC Code</span></a>
-                        
-                    </div>
-                </li>
 
                 <li class="nav-item dropdown language-dropdown">
                     <a href="javascript:void(0);" class="nav-link dropdown-toggle" id="language-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <img src="{{ url_for('static', filename='assets/img/ca.png') }}" class="flag-width" alt="flag">
                     </a>
                     <div class="dropdown-menu position-absolute" aria-labelledby="language-dropdown">
-                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/de.png') }}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;Ge</span></a>
-                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/jp.png') }}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;Ja</span></a>
-                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/fr.png') }}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;Fr</span></a>
-                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/ca.png') }}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;En</span></a>
+                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/de.png') }}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;German</span></a>
+                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/jp.png') }}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;Japanese</span></a>
+                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/fr.png') }}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;French</span></a>
+                        <a class="dropdown-item d-flex" href="javascript:void(0);"><img src="{{ url_for('static', filename='assets/img/ca.png') }}" class="flag-width" alt="flag"> <span class="align-self-center">&nbsp;English</span></a>
                     </div>
                 </li>
             </ul>
         </header>
     </div>
-
     <div class="sub-header-container">
     <header class="header navbar navbar-expand-sm">
         <a href="javascript:void(0);" class="sidebarCollapse" data-placement="bottom"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg></a>
@@ -119,6 +184,7 @@
             </ul>
         </header>
     </div>
+
     <!--  BEGIN MAIN CONTAINER  -->
     <div class="main-container" id="container">
                 <!-- <div class="overlay"></div> -->
@@ -140,8 +206,14 @@
                                 </a>
                                 <ul class="collapse submenu list-unstyled" id="app" data-parent="#accordionExample">
                                     <li>
-                                        <a href="{{ url_for('index') }}"> Stock Price Forcast </a>
-                                    </li>                               
+                                        <a href="apps_chat.html"> Stock Price Forcast </a>
+                                    </li>
+                                    <li>
+                                        <a href="apps_mailbox.html"> Image Classifier  </a>
+                                    </li>
+                                    <li>
+                                        <a href="apps_todoList.html"> Accident Classifier </a>
+                                    </li>                            
                                 </ul>
                             </li>
 
@@ -157,102 +229,92 @@
                 <!--  END SIDEBAR  -->
 
           <!--  BEGIN CONTENT AREA  -->
-            
-                  <div id="content" class="main-content">
-
-                      <div class="layout-px-spacing">
-
-                          <div class="row layout-top-spacing">  
-                                <div class="container-contact100">
-                                  <!-- TradingView Widget BEGIN -->
-                                  <div class="tradingview-widget-container">
-                                    <div id="tradingview_24fa1"></div>
-                                    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener" target="_blank"><span class="blue-text">AAPL Chart</span></a> by TradingView</div>
-                                    <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
-                                    <script type="text/javascript">
-                                    new TradingView.widget(
-                                    {
-                                    "width": 1200,
-                                    "height": 450,
-                                    "symbol": "NASDAQ:AAPL",
-                                    "timezone": "America/Chicago",
-                                    "theme": "dark",
-                                    "style": "1",
-                                    "locale": "en",
-                                    "toolbar_bg": "#f1f3f6",
-                                    "enable_publishing": false,
-                                    "range": "YTD",
-                                    "allow_symbol_change": true,
-                                    "details": true,
-                                    "hotlist": true,
-                                    "calendar": true,
-                                    "show_popup_button": true,
-                                    "popup_width": "1500",
-                                    "popup_height": "650",
-                                    "container_id": "tradingview_24fa1"
-                                  }
-                                    );
-                                    </script>
-                                  </div>
-                                  <!-- TradingView Widget END -->
-                              <!-- TradingView Widget END -->
-                           </div>
-                        </div>
-                          
-
-                    <div class="row layout-top-spacing">
-                        <div class="col-xl-4 col-lg-12 col-md-12 col-lg-12 col-12 layout-spacing">
-                                
-
-                           <div class="wrap-contact100">
-                            <form class="login" action = "{{ url_for('insertintotable') }}" method = "POST">
-                          <!-- Header -->
-                          <div id="home" class="bg-inner low-back-gradient-inner">
-                            <div class="text-con-inner low-back-up">
-                              <div class="container">
-                                <div style="padding-top: 40px" class="row">
-                                  <div class="lead col-lg-12 col-xm-12 text-center">
-                                    <div class="list-o-i white">
-                                      <p class="white no-p"></p>
-                                      <div class="pagenation_links"><a class="yellow"><br></a><i> </i></div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                  </div>
+          
+        <div id="content" class="main-content">
+                     
+            <div class="layout-px-spacing">
+                <div>
+                <center>
+                    <object data="{{ url_for('static', filename='pdfs/web/Clinical Case of Lung Disease.pdf') }}" type="application/pdf" width="100%" height="100%" id="pdf-viewer">
+                    </object>
+                </center>
+                </div>
+                    <div>
+                        <div class="row layout-top-spacing">
+                            <div class="card mb-4 shadow-sm">
+                                <div class="card-header">
+                                    <h5 class="my-0 font-weight-normal">Diagnose Covid-19</h5>
                                 </div>
-                              </div>
-                              <div class="login_title">
-                                <h2 style="color: skyblue;">ENTER STOCK SYMBOL</h2>{% if not_found %}
-                                <div class="alert alert-danger" style="color: red;" role="alert">
-                        Stock Symbol (Ticker) Not Found. Please Enter a Valid Stock Symbol
-                      </div>
-                                {% endif %}
-                              </div>
-                              <div class="form-group">
-                                <input type="text" class="form-control" name = "nm" placeholder="Company Stock Symbol">
-
-                              </div>
-                              <div class="form-group">
-                                
-                              </div>
-                              <div class="form-group" style="color: blue;">
-                                <button class="btn btn-login" style="color: blue;">NEXT WEEK FORECAST</button>
-                              </div>
-                              
-                                </form>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <form action="/uploadedcnd" method="POST" enctype="multipart/form-data">
+                                            <input type="file" name="file" id="file-upload_2" onchange="showname_2()" />
+                                        <input type="submit" value="Upload" class="btn btn-outline-danger">
+                                    </form>
+                                </div>
                             </div>
                         </div>
+                        <div class="card mb-4 shadow-sm">
+                            <div class="card-header">
+                                <h5 class="my-0 font-weight-normal">Diagnose Pneumonia</h5>
+                                
+                            </div>
+                            <div class="card-body">
 
+                                <div class="text-center">
+                                    <form action="/uploadedpnd" method="POST" enctype="multipart/form-data">
+                                        <input type="file" name="file" id="file-upload_3" onchange="showname_3()" />
+                                        <input type="submit" value="Upload" class="btn btn-outline-danger">
+                                    </form>
+                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card mb-4 shadow-sm">
+                               <div class="card-header">
+                                   <h5 class="my-0 font-weight-normal">Diagnose Covid-19/Pneumonia</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <form action="/uploadedmulti" method="POST" enctype="multipart/form-data">
+                                            <input type="file" name="file" id="file-upload_4" onchange="showname_4()" />
+                                            <input type="submit" value="Upload" class="btn btn-outline-danger">
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                  <!--  END CONTENT AREA  -->
-                  </div>
 
+            </div>
+          <!--  END CONTENT AREA  -->
         </div>
+    </div>
+       
    <!-- END MAIN CONTAINER -->
 
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     <!-- {{ url_for('static', filename='assets/js/dashboard/papaparse.js') }} -->
+    <script type="text/javascript">
+        function showname() {
+            var name_1 = document.getElementById('file-upload_1');
+            document.getElementById('label_1').innerHTML = name_1.files.item(0).name;
+        };
+
+        function showname_2() {
+            var name_2 = document.getElementById('file-upload_2');
+            document.getElementById('label_2').innerHTML = name_2.files.item(0).name;
+        };
+
+        function showname_3() {
+            var name_3 = document.getElementById('file-upload_3');
+            document.getElementById('label_3').innerHTML = name_3.files.item(0).name;
+        };
+        function showname_4() {
+            var name_4 = document.getElementById('file-upload_4');
+            document.getElementById('label_4').innerHTML = name_4.files.item(0).name;
+        };
+    </script>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="{{ url_for('static', filename='bootstrap/js/popper.min.js') }}"></script>
     <script src="{{ url_for('static', filename='bootstrap/js/bootstrap.min.js') }}"></script>
@@ -272,6 +334,7 @@
     <script src="{{ url_for('static', filename='assets/js/dashboard/dash_1.js') }}"></script>
     <script src="{{ url_for('static', filename='assets/js/dashboard/papaparse.min.js') }}"></script>
     
+
 </body>
 </html>
 

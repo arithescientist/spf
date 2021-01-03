@@ -1,10 +1,8 @@
 try {
 
-
   Apex.tooltip = {
     theme: 'dark'
   }
-
 
     /*
         ==============================
@@ -40,7 +38,7 @@ try {
             }
         },
         series: [{
-            data: [21, 9, 36, 12, 44, 25, 59, 41, 66, 25].reverse()
+            data: [21, 9, 36, 12, 44, 25, 59, 41, 66, 25]
         }],
         stroke: {
           curve: 'smooth',
@@ -139,7 +137,7 @@ try {
           }
         },
         series: [{
-          data: [22, 19, 30, 47, 32, 44, 34, 55, 41, 69].reverse()
+          data: [22, 19, 30, 47, 32, 44, 34, 55, 41, 69]
         }],
         stroke: {
           curve: 'smooth',
@@ -273,13 +271,13 @@ try {
       },
       series: [{
           name: 'Direct',
-          data: [58, 44, 55, 57, 56, 61, 58, 63, 60, 66, 56, 63].reverse()
+          data: [58, 44, 55, 57, 56, 61, 58, 63, 60, 66, 56, 63]
       }, {
           name: 'Organic',
-          data: [91, 76, 85, 101, 98, 87, 105, 91, 114, 94, 66, 70].reverse()
+          data: [91, 76, 85, 101, 98, 87, 105, 91, 114, 94, 66, 70]
       }],
       xaxis: {
-          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'].reverse(),
+          categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
       },
       fill: {
         type: 'gradient',
@@ -326,9 +324,9 @@ try {
       },
       series: [{
         name: 'Sales',
-        data: [38, 60, 38, 52, 36, 40, 28 ].reverse()
+        data: [38, 60, 38, 52, 36, 40, 28 ]
       }],
-      labels: ['1', '2', '3', '4', '5', '6', '7'].reverse(),
+      labels: ['1', '2', '3', '4', '5', '6', '7'],
       yaxis: {
         min: 0
       },
@@ -368,9 +366,9 @@ try {
       },
       series: [{
         name: 'Sales',
-        data: [ 60, 28, 52, 38, 40, 36, 38].reverse()
+        data: [ 60, 28, 52, 38, 40, 36, 38]
       }],
-      labels: ['1', '2', '3', '4', '5', '6', '7'].reverse(),
+      labels: ['1', '2', '3', '4', '5', '6', '7'],
       yaxis: {
         min: 0
       },
@@ -413,9 +411,9 @@ try {
       },
       series: [{
         name: 'Sales',
-        data: [28, 50, 36, 60, 38, 52, 38 ].reverse()
+        data: [28, 50, 36, 60, 38, 52, 38 ]
       }],
-      labels: ['1', '2', '3', '4', '5', '6', '7'].reverse(),
+      labels: ['1', '2', '3', '4', '5', '6', '7'],
       yaxis: {
         min: 0
       },
