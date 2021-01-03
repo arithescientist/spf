@@ -18,6 +18,8 @@
  ## Preview
   <img src='screenshots/home.PNG' width='50%'/>
   <img src='screenshots/results.PNG' width='50%'/>
+  <img src='screenshots/results2.PNG' width='50%'/>
+  <img src='screenshots/results3.PNG' width='50%'/>
   
 ## Purpose
 The purpose of this research is to build a model that can efficiently predict a company's Adj. Close price for the next 7 days.
