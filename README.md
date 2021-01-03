@@ -16,8 +16,8 @@
 * [Future Work](#future-work)
   
  ## Preview
-  <img src='screenshots/Upload.png' width='50%'/>
-  <img src='screenshots/Result1.png' width='50%'/>
+  <img src='screenshots/home.PNG' width='50%'/>
+  <img src='screenshots/results.png' width='50%'/>
   
 ## Purpose
 The purpose of this research is to build a model that can efficiently predict a company's Adj. Close price for the next 7 days.
@@ -31,8 +31,8 @@ For this research, I used the Apple's historical stock data extracted from Yahoo
 Firstly, I loaded the specific Apple (AAPL) dataset from yahoo finance. This dataset is composed of 12 different features but I just used the Adj. Close price column since that's what I'm going to be forecasting using the ARMA model. Next step is to test for stationarity but given that this is a stock data, its highly likely that it's not going to be stationary. This is because stock prices usually increase over time. So given its not stationary, the mean of the data increases over time which might ultimately lead to a degradation of the model. 
 To test if the data is stationary, I used the Augmented Dickey-Fuller Test. As we can see, the p-value is larger than the significance level of 0.05 so I will accept the null hypothesis which is that the data is non-stationary. 
   
-  <img src='='screenshots/trends.png' width='50%'/>
-  <img src='='screenshots/corr.png' width='50%'/>
+  <img src='='screenshots/trends.PNG' width='50%'/>
+  <img src='='screenshots/corr.PNG' width='50%'/>
   
 ## [Results](./covid_vs_normal.ipynb)
 Next, I created ACF and PACF plots to determine the p and q input parameters for our ARIMA model. From the plots, 1 and 2 seems to be a good values for p and q respectively but I'll still run an autoarima model to be sure I utilize the most optimal parameters. I then went on into fitting the model in train half of the data using 0 as my p and q parameters gotten from running the autoarima model with 1 as my order of differencing. After validating the model with test results, my root mean square error is x rmse which is not too bad. 
