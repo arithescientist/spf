@@ -27,7 +27,7 @@ For this research, I used the Apple's historical stock data extracted from Yahoo
 * https://finance.yahoo.com/q/hp?s=YHOO
 
 
-## [Model]
+## Model
 Firstly, I loaded the specific Apple (AAPL) dataset from yahoo finance. This dataset is composed of 12 different features but I just used the Adj. Close price column since that's what I'm going to be forecasting using the ARMA model. Next step is to test for stationarity but given that this is a stock data, its highly likely that it's not going to be stationary. This is because stock prices usually increase over time. So given its not stationary, the mean of the data increases over time which might ultimately lead to a degradation of the model. 
 To test if the data is stationary, I used the Augmented Dickey-Fuller Test. As we can see, the p-value is larger than the significance level of 0.05 so I will accept the null hypothesis which is that the data is non-stationary. 
   
