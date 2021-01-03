@@ -474,11 +474,12 @@ def insertintotable():
 
         #predictions
         arima_predi, error_arima, tomorrow_ar, i, pre = ARIMA_ALGO(d)
-        df3, error_lstm, tomorrow_lstm = LSTM_ALGO(d)
+        # df3, error_lstm, tomorrow_lstm = LSTM_ALGO(d)
 
-        df3 = pd.DataFrame(df3, columns = ["LSTM"])
-        df3 = pd.concat([df3, pre.Adj_close], axis=1)
-        df3 = pd.concat([df3, pre.Date], axis=1)
+
+        #df3 = pd.DataFrame(df3, columns = ["LSTM"])
+        #df3 = pd.concat([df3, pre.Adj_close], axis=1)
+        df3 = pd.concat([pre.Date], axis=1)
         all_pred = pd.concat([df3, pre["ARIMA"]], axis=1)
         
         print()
@@ -489,9 +490,9 @@ def insertintotable():
         forecast_set_ar = np.round(np.array(all_pred["ARIMA"].tail(7)),2).reshape(-1,1)
         mean=d["adjClose"].tail(7).mean()
         print(forecast_set_ar)
-        print("LSTM Forecasted Prices for Next 7 days:")
-        forecast_set_ls = np.round(np.array(all_pred["LSTM"].tail(7)), 2).reshape(-1,1)
-        print(forecast_set_ls)
+        # print("LSTM Forecasted Prices for Next 7 days:")
+        #forecast_set_ls = np.round(np.array(all_pred["LSTM"].tail(7)), 2).reshape(-1,1)
+        #print(forecast_set_ls)
         print()
         #print("Generating recommendation based on prediction & polarity...")
         idea, decision=recommending(i, polarity,today_stock,mean)
@@ -506,7 +507,7 @@ def insertintotable():
         simplejson.dump(k, out_file, ignore_nan=True, ensure_ascii=False, indent=4)
         
 
-        big_data = {"Date": np.array(df3.Date), "ARIMA": np.array(pre["ARIMA"]), "LSTM": np.array(df3["LSTM"])} 
+        big_data = {"Date": np.array(df3.Date), "ARIMA": np.array(pre["ARIMA"])} 
         df2=pd.DataFrame(big_data)
         adj = pd.DataFrame(np.array(i.Adj_close), columns = ["Adj_close"])
         df2= pd.concat([df2, adj], axis=1)
@@ -516,18 +517,18 @@ def insertintotable():
         simplejson.dump(k, out_file, ignore_nan=True, ensure_ascii=False, indent=4)
 
 
-        big_data = {"Date": np.array(df3.Date), "ARIMA": np.array(pre["ARIMA"]), "LSTM": np.array(df3["LSTM"])}
+        big_data = {"Date": np.array(df3.Date), "ARIMA": np.array(pre["ARIMA"])}
         df2=pd.DataFrame(big_data)
         k = df2.to_dict('records')
         out_file = open("static/assets/js/dashboard/forecast.json", "w", encoding='utf-8') 
         simplejson.dump(k, out_file, ignore_nan=True, ensure_ascii=False, indent=4)
 
-        return render_template('results.html',quote=quote,arima_pred=round(tomorrow_ar,2),lstm_pred=[round(y) for y in tomorrow_lstm][0],
+        return render_template('results.html',quote=quote,arima_pred=round(tomorrow_ar,2),
                                open_s=today_stock['open'].to_string(index=False),
                                close_s=today_stock['close'].to_string(index=False),adj_close=today_stock['adjClose'].to_string(index=False),
                                tw_list=tw_list,tw_pol=tw_pol,idea=idea,decision=decision,high_s=today_stock['high'].to_string(index=False),
                                low_s=today_stock['low'].to_string(index=False),vol=today_stock['volume'].to_string(index=False),
-                               forecast_set_ar=forecast_set_ar,dates=dates,forecast_set_ls=forecast_set_ls,error_lstm=round(error_lstm,2),error_arima=round(error_arima,2) )
+                               forecast_set_ar=forecast_set_ar,dates=dates,error_arima=round(error_arima,2) )
 
 
 
