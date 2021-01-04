@@ -37,9 +37,10 @@ To test if the data is stationary, I used the Augmented Dickey-Fuller Test. As w
   <img src='screenshots/corr.PNG' width='50%'/>
   
 ## [Results](./arima_and_nlp.ipynb)
-Next, I created ACF and PACF plots to determine the p and q input parameters for our ARIMA model. From the plots, 1 and 2 seems to be a good values for p and q respectively but I'll still run an autoarima model to be sure I utilize the most optimal parameters. I then went on into fitting the model in train half of the data using 0 as my p and q parameters gotten from running the autoarima model with 1 as my order of differencing. After validating the model with test results, my root mean square error is x rmse which is not too bad. 
+Next, I created ACF and PACF plots to determine the p and q input parameters for our ARIMA model. From the plots, 1 and 2 seems to be a good values for p and q respectively but I'll still run an autoarima model to be sure I utilize the most optimal parameters. I then went on into fitting the model in train half of the data using 0 as my p and q parameters gotten from running the autoarima model with 1 as my order of differencing. After validating the model with test results, my root mean square error is 2.5 rmse which is not too bad. 
     
   <img src='screenshots/autoarima.PNG' width='50%'/>
+    <img src='screenshots/error.PNG' width='50%'/>
   <img src='screenshots/twitter.PNG' width='50%'/>
 
 
