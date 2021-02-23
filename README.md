@@ -1,7 +1,7 @@
 # Stock Price Forecasting Flask Web App
 
 ### Predicting Appple's Adj. Close Price For The Next 7 Days 
-### WEB APP - http://aridavinci.com:5000/
+### WEB APP - https://davinciai.dev/forecaster
 
  # Table Of Contents
 * [Purpose](#purpose)
