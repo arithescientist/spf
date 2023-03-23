@@ -9,7 +9,7 @@ flask
 pandas
 matplotlib
 scikit_learn
-statsmodels==0.10.1
+statsmodels
 yfinance==0.1.54
 alpha_vantage==2.1.3
 tensorflow
