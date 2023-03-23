@@ -14,4 +14,5 @@ yfinance==0.1.54
 alpha_vantage==2.1.3
 tensorflow
 xgboost
+simplejson
 tweet-preprocessor
