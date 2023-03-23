@@ -1,5 +1,5 @@
 nltk
-keras==2.3.1
+keras
 numpy
 streamlit==0.52.1
 seaborn
