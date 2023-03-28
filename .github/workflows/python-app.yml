@@ -1,26 +1,17 @@
-name: Merge Pull Request
+name: Merge Branches
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
+    branches:
+      - main
 
 jobs:
   merge:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v2
-        with:
-          ref: main
-      - name: Merge Branches
-        uses: pullreminders/merge@v1.0.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          method: merge
-          commit-message: Merge pull request
-          commit-author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
-          delete-branch: true
-          base: main
-          head: ${{ github.event.pull_request.head.ref }}
-        if: github.event.pull_request.base.ref == 'main' && (github.event.pull_request.head.ref == 'ikram' || github.event.pull_request.head.ref == 'awais')
+      - name: Merge branches
+        run: |
+          git checkout main
+          git merge --no-ff ikram awais
+          git push
