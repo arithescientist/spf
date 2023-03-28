@@ -3,7 +3,7 @@
 ### Dockerhub Repository: 
 https://hub.docker.com/repository/docker/ikramkhan1/mlops_a2/general
 # NOTE:
-#### (Image upload speed to Dockerhub Repository is considerably slower than expected. It has only uploaded 40 MB in 1 hour, and the total size of image is 3.53 GB. This may cause some delays in the upload process or in worse case I might not be able to not upload the docker image to dockerhub.)
+#### (Image upload speed to Dockerhub Repository is considerably slower than expected. It has only uploaded 40 MB in 1 hour, and the total size of image is 3.53 GB. This may cause some delays in the upload process or in worse case I might not be able to upload the docker image to dockerhub.)
 
 
 
