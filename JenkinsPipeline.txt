@@ -1,0 +1,34 @@
+pipeline {
+    agent any 
+    environment {
+        registry = "ikramkhan1/mlops_a2"
+        registryCredential = 'dockerhub_id'
+        dockerImage = ''
+    }
+    
+    stages {
+        stage('Cloning Git') {
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ikram554/spf']])
+            }
+        }
+    
+        stage('Building image') {
+          steps{
+            script {
+              dockerImage = docker.build registry
+            }
+          }
+        }
+    
+        stage('Upload Image') {
+         steps{    
+             script {
+                docker.withRegistry( '', registryCredential ) {
+                dockerImage.push()
+                }
+            }
+          }
+        }
+    }
+}
