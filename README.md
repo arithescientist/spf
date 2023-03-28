@@ -6,7 +6,6 @@ https://hub.docker.com/repository/docker/ikramkhan1/mlops_a2/general
 ## (Image upload speed to Dockerhub Repository is very slow. It has only uploaded 40 MB in 1 hour, and the total size of image is 3.53 GB)
 
 
-### Predicting Appple's Adj. Close Price For The Next 7 Days 
 
 ## JENKINS PIPELINE
 
