@@ -1,10 +1,66 @@
 # Stock Price Forecasting Flask Web App
 
-### Predicting Appple's Adj. Close Price For The Next 7 Days 
-### WEB APP - https://aritheanalyst.com/ir
+###Dockerhub Repository: 
+https://hub.docker.com/repository/docker/ikramkhan1/mlops_a2/general
+(Image upload speed to Dockerhub Repository is very slow. It has only uploaded 40 MB in 1 hour, and the total size of image is 3.53 GB)
 
-### Recommendation
-* 0 seems to be the best parameters for p and q with 1 as the order of differencing to use when forecasting AAPL stock dataset but I recommend using an autoarima model to be sure the best parameters are picked before fitting in the training data.
+
+### Predicting Appple's Adj. Close Price For The Next 7 Days 
+
+## JENKINS PIPELINE
+
+```
+pipeline {
+    agent any 
+    environment {
+        registry = "ikramkhan1/mlops_a2"
+        registryCredential = 'dockerhub_id'
+        dockerImage = ''
+    }
+    
+    stages {
+        stage('Cloning Git') {
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ikram554/spf']])
+            }
+        }
+    
+        stage('Building image') {
+          steps{
+            script {
+              dockerImage = docker.build registry
+            }
+          }
+        }
+    
+        stage('Upload Image') {
+         steps{    
+             script {
+                docker.withRegistry( '', registryCredential ) {
+                dockerImage.push()
+                }
+            }
+          }
+        }
+    }
+}
+
+```
+
+ ## Preview
+  <img src='screenshots/home.PNG' width='50%'/>
+  <img src='screenshots/results.PNG' width='50%'/>
+  <img src='screenshots/results2.PNG' width='50%'/>
+  <img src='screenshots/results3.PNG' width='50%'/>
+
+  <img src='screenshots/trends.PNG' width='50%'/>
+  <img src='screenshots/corr.PNG' width='50%'/>
+  
+    
+  <img src='screenshots/autoarima.PNG' width='50%'/>
+    <img src='screenshots/error.PNG' width='50%'/>
+  <img src='screenshots/twitter.PNG' width='50%'/>
+
 
 ## Setup
 - Install the requirements and setup the development environment.
@@ -17,6 +73,3 @@
 		`python3 main.py`
 
 - Navigate to `localhost:5000`.
-
-## Future Work
-   * Use a simple LSTM model to forecast 7 days out then do the same with a Multivariate LSTM model. 
