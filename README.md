@@ -9,7 +9,8 @@ https://hub.docker.com/repository/docker/ikramkhan1/mlops_a2/general
 
 ## JENKINS PIPELINE
 ### Note: If anyone is interested in using Jenkins pipeline, replace:
-registry = "ikramkhan1/mlops_a2" &#8594; &#8594
+registry = "ikramkhan1/mlops_a2"   &#8594;   registry = "url to your dockerhub repo"
+Add your dockerhub credentials to ####### managae ###### jenkins
 
 ```
 pipeline {
