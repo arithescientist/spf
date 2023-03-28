@@ -1,46 +1,26 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-
-name: Python application
+name: Merge Pull Request
 
 on:
-  push:
-    branches: [ "main" ]
   pull_request:
-    branches: [ "main" ]
-
-permissions:
-  contents: read
+    types: [opened, reopened, synchronize]
 
 jobs:
-  Job1:
-      name: Job1
-    build:
-
-      runs-on: ubuntu-latest
-      if: github.event.pull_request.base.ref == 'ikram'  
-      steps:
-      - uses: actions/checkout@v3
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v3
-        with:
-          python-version: "3.10"
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-      - name: Run the application
-        run: |
-          python main.py
-  Job2:
-    if: github.event.pull_request.base.ref == 'main'
+  merge:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
 
-      - name: Merge branches to main
-        run: |
-          git checkout main
-          git merge ikram
-          git merge awais
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: main
+      - name: Merge Branches
+        uses: pullreminders/merge@v1.0.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          method: merge
+          commit-message: Merge pull request
+          commit-author: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
+          delete-branch: true
+          base: main
+          head: ${{ github.event.pull_request.head.ref }}
+        if: github.event.pull_request.base.ref == 'main' && (github.event.pull_request.head.ref == 'ikram' || github.event.pull_request.head.ref == 'awais')
