@@ -6,12 +6,13 @@ on:
       - main
 
 jobs:
-  merge:
+  merge-branches:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v2
-      - name: Merge branches
+      - name: Merge Branches
         run: |
-          git checkout main
-          git merge --no-ff ikram awais
-          git push
+          git merge --no-ff ikram
+          git merge --no-ff awais
+          git push origin main
