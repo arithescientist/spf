@@ -8,9 +8,6 @@ https://hub.docker.com/repository/docker/ikramkhan1/mlops_a2/general
 
 
 ## JENKINS PIPELINE
-### Note: If anyone is interested in using Jenkins pipeline, replace:
-registry = "ikramkhan1/mlops_a2"   &#8594;   registry = "url to your dockerhub repo"
-Add your dockerhub credentials to ####### managae ###### jenkins
 
 ```
 pipeline {
@@ -49,6 +46,13 @@ pipeline {
 }
 
 ```
+### Note:
+If you're considering using the Jenkins pipeline, please keep in mind the following important instructions for customization:
+- To add your DockerHub credentials, navigate to Manage Jenkins → Manage Credentials in Jenkins, and update the appropriate field.
+- To replace the GitHub URL in the checkout stage, simply update it to reflect your own repository's URL.
+- Finally, ensure that you update the "registry" field to match the URL for your own DockerHub repository.
+By following these steps, you can easily customize the Jenkins pipeline for your own purposes.
+
 
  ## Preview
   <img src='screenshots/home.PNG' width='50%'/>
