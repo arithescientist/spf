@@ -7,7 +7,6 @@ https://hub.docker.com/repository/docker/ikramkhan1/mlops_a2/general
 
 
 ### Predicting Appple's Adj. Close Price For The Next 7 Days 
-### WEB APP - https://aritheanalyst.com/ir
 
 ## JENKINS PIPELINE
 
